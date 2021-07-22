@@ -1,4 +1,4 @@
-= Draft OGC API - coverages  Conformance Test Suite
+= Draft OGC API - Coverages  Conformance Test Suite
 
 == Scope
 

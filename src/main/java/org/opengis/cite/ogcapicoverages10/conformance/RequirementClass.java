@@ -9,7 +9,8 @@ package org.opengis.cite.ogcapicoverages10.conformance;
  */
 public enum RequirementClass {
 
-    CORE( "http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core" );
+    CORE( "http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core" ),
+	GeodataCoverage("http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/geodata-coverage");
 
 
 

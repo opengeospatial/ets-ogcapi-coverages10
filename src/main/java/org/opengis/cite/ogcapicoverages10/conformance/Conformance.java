@@ -6,6 +6,7 @@ import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.API_MODEL;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.IUT;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
 import static org.opengis.cite.ogcapicoverages10.conformance.RequirementClass.CORE;
+import static org.opengis.cite.ogcapicoverages10.conformance.RequirementClass.GeodataCoverage;
 import static org.opengis.cite.ogcapicoverages10.openapi3.OpenApiUtils.retrieveTestPointsForConformance;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
@@ -88,8 +89,8 @@ public class Conformance extends CommonFixture {
 
         JsonPath jsonPath = response.jsonPath();
         this.requirementClasses = parseAndValidateRequirementClasses( jsonPath );
-        assertTrue( this.requirementClasses.contains( CORE ),
-                    "Requirement class \"http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core\" is not available from path "
+        assertTrue( this.requirementClasses.contains( GeodataCoverage ),
+                    "Requirement class \"http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/geodata-coverage\" is not available from path "
                                                               + testPointUri );
     }
 
@@ -106,7 +107,7 @@ public class Conformance extends CommonFixture {
 
         List<RequirementClass> requirementClasses = new ArrayList<>();
         for ( Object conformTo : conformsTo ) {
-        	System.out.println("conformsTo "+conformsTo);
+       
             if ( conformTo instanceof String ) {
                 String conformanceClass = (String) conformTo;
                 RequirementClass requirementClass = RequirementClass.byConformanceClass( conformanceClass );
