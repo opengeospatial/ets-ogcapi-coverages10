@@ -1,15 +1,15 @@
-package org.opengis.cite.ogcapiprocesses10.landingpage;
+package org.opengis.cite.ogcapicoverages10.landingpage;
 
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.Method.GET;
-import static org.opengis.cite.ogcapiprocesses10.EtsAssert.assertTrue;
+import static org.opengis.cite.ogcapicoverages10.EtsAssert.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.opengis.cite.ogcapiprocesses10.CommonFixture;
+import org.opengis.cite.ogcapicoverages10.CommonFixture;
 import org.testng.annotations.Test;
 
 import io.restassured.path.json.JsonPath;

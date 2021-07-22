@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 
-import org.opengis.cite.ogcapiprocesses10.util.TestSuiteLogger;
+import org.opengis.cite.ogcapicoverages10.util.TestSuiteLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

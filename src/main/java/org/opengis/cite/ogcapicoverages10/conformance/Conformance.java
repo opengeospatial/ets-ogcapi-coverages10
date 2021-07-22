@@ -1,12 +1,12 @@
-package org.opengis.cite.ogcapiprocesses10.conformance;
+package org.opengis.cite.ogcapicoverages10.conformance;
 
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.Method.GET;
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.API_MODEL;
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.IUT;
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.REQUIREMENTCLASSES;
-import static org.opengis.cite.ogcapiprocesses10.conformance.RequirementClass.CORE;
-import static org.opengis.cite.ogcapiprocesses10.openapi3.OpenApiUtils.retrieveTestPointsForConformance;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.API_MODEL;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.IUT;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
+import static org.opengis.cite.ogcapicoverages10.conformance.RequirementClass.CORE;
+import static org.opengis.cite.ogcapicoverages10.openapi3.OpenApiUtils.retrieveTestPointsForConformance;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.Map;
 
 
-import org.opengis.cite.ogcapiprocesses10.CommonFixture;
-import org.opengis.cite.ogcapiprocesses10.openapi3.TestPoint;
-import org.opengis.cite.ogcapiprocesses10.openapi3.UriBuilder;
+import org.opengis.cite.ogcapicoverages10.CommonFixture;
+import org.opengis.cite.ogcapicoverages10.openapi3.TestPoint;
+import org.opengis.cite.ogcapicoverages10.openapi3.UriBuilder;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;

@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
 /**
  * An enumerated type defining all recognized test run arguments.

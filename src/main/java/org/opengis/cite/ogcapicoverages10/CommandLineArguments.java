@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
 import com.beust.jcommander.Parameter;
 import java.io.File;

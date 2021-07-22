@@ -1,12 +1,12 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
 import com.sun.jersey.api.client.ClientRequest;
 import com.sun.jersey.api.client.ClientResponse;
 import java.nio.charset.StandardCharsets;
 import javax.ws.rs.core.MediaType;
 
-import org.opengis.cite.ogcapiprocesses10.util.ClientUtils;
-import org.opengis.cite.ogcapiprocesses10.util.XMLUtils;
+import org.opengis.cite.ogcapicoverages10.util.ClientUtils;
+import org.opengis.cite.ogcapicoverages10.util.XMLUtils;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import org.w3c.dom.Document;

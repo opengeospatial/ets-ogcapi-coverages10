@@ -1,8 +1,8 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.API_MODEL;
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.NO_OF_COLLECTIONS;
-import static org.opengis.cite.ogcapiprocesses10.SuiteAttribute.REQUIREMENTCLASSES;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.API_MODEL;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.NO_OF_COLLECTIONS;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 import com.reprezen.kaizen.oasparser.model3.OpenApi3;
 
-import org.opengis.cite.ogcapiprocesses10.conformance.RequirementClass;
+import org.opengis.cite.ogcapicoverages10.conformance.RequirementClass;
 import org.testng.ITestContext;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;

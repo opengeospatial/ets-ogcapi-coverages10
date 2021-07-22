@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10.openapi3;
+package org.opengis.cite.ogcapicoverages10.openapi3;
 
 import java.util.Collections;
 import java.util.Map;

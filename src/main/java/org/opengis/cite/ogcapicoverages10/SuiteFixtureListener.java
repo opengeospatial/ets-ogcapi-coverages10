@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.net.URI;
 import java.util.Map;
 import java.util.logging.Level;
 
-import org.opengis.cite.ogcapiprocesses10.util.ClientUtils;
-import org.opengis.cite.ogcapiprocesses10.util.TestSuiteLogger;
-import org.opengis.cite.ogcapiprocesses10.util.URIUtils;
+import org.opengis.cite.ogcapicoverages10.util.ClientUtils;
+import org.opengis.cite.ogcapicoverages10.util.TestSuiteLogger;
+import org.opengis.cite.ogcapicoverages10.util.URIUtils;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 

@@ -1,7 +1,7 @@
-package org.opengis.cite.ogcapiprocesses10.openapi3;
+package org.opengis.cite.ogcapicoverages10.openapi3;
 
-import static org.opengis.cite.ogcapiprocesses10.openapi3.OpenApiUtils.PATH.COLLECTIONS;
-import static org.opengis.cite.ogcapiprocesses10.openapi3.OpenApiUtils.PATH.CONFORMANCE;
+import static org.opengis.cite.ogcapicoverages10.openapi3.OpenApiUtils.PATH.COLLECTIONS;
+import static org.opengis.cite.ogcapicoverages10.openapi3.OpenApiUtils.PATH.CONFORMANCE;
 
 import java.net.URI;
 import java.net.URISyntaxException;

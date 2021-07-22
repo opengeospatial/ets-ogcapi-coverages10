@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10.util;
+package org.opengis.cite.ogcapicoverages10.util;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

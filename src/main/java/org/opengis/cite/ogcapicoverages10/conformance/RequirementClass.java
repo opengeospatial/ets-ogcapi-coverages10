@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapiprocesses10.conformance;
+package org.opengis.cite.ogcapicoverages10.conformance;
 
 /**
  * 

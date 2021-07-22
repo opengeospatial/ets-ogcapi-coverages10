@@ -1,8 +1,8 @@
-package org.opengis.cite.ogcapiprocesses10.util;
+package org.opengis.cite.ogcapicoverages10.util;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.Method.GET;
-import static org.opengis.cite.ogcapiprocesses10.OgcApiProcesses10.GEOJSON_MIME_TYPE;
+import static org.opengis.cite.ogcapicoverages10.OgcApiCoverages10.GEOJSON_MIME_TYPE;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -5,4 +5,4 @@
  * <p>Subsidiary packages correspond to distinct test groups such as conformance
  * classes.</p>
  */
-package  org.opengis.cite.ogcapiprocesses10;
+package org.opengis.cite.ogcapicoverages10;
