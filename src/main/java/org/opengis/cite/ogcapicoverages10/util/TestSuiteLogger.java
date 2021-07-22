@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapicoverages10.util;
+package org.opengis.cite.ogcapiprocesses10.util;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

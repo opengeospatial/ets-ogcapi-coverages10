@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapicoverages10;
+package org.opengis.cite.ogcapiprocesses10;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 
-import org.opengis.cite.ogcapicoverages10.util.TestSuiteLogger;
+import org.opengis.cite.ogcapiprocesses10.util.TestSuiteLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -44,7 +44,7 @@ public class TestNGController implements TestSuiteController {
      * <p>
      * <strong>Synopsis</strong>
      * </p>
-     * 
+     *
      * <pre>
      * ets-*-aio.jar [-o|--outputDir $TMPDIR] [-d|--deleteSubjectOnFinish] [test-run-props.xml]
      * </pre>
@@ -89,7 +89,7 @@ public class TestNGController implements TestSuiteController {
 
     /**
      * Construct a controller that writes results to the given output directory.
-     * 
+     *
      * @param outputDir
      *            The location of the directory in which test results will be
      *            written (a file system path or a 'file' URI). It will be

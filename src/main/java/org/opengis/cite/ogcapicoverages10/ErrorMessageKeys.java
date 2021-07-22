@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapicoverages10;
+package org.opengis.cite.ogcapiprocesses10;
 
 /**
  * Defines keys used to access localized messages for assertion errors. The

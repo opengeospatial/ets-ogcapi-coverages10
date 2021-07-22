@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapicoverages10.util;
+package org.opengis.cite.ogcapiprocesses10.util;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.xml.namespace.NamespaceContext;
-import org.opengis.cite.ogcapicoverages10.Namespaces;
+
+import org.opengis.cite.ogcapiprocesses10.Namespaces;
 
 /**
  * Provides namespace bindings for evaluating XPath 1.0 expressions using the
@@ -82,9 +83,9 @@ public class NamespaceBindings implements NamespaceContext {
      * bindings:
      * 
      * <ul>
-     * <li>ows: {@value org.opengis.cite.ogcapicoverages10.Namespaces#OWS}</li>
-     * <li>xlink: {@value org.opengis.cite.ogcapicoverages10.Namespaces#XLINK}</li>
-     * <li>gml: {@value org.opengis.cite.ogcapicoverages10.Namespaces#GML}</li>
+     * <li>ows: {@value org.opengis.cite.ogcapiprocesses10.Namespaces#OWS}</li>
+     * <li>xlink: {@value org.opengis.cite.ogcapiprocesses10.Namespaces#XLINK}</li>
+     * <li>gml: {@value org.opengis.cite.ogcapiprocesses10.Namespaces#GML}</li>
      * </ul>
      * 
      * @return A NamespaceBindings object.

@@ -1,10 +1,10 @@
-package org.opengis.cite.ogcapicoverages10;
+package org.opengis.cite.ogcapiprocesses10;
 
 import java.net.URI;
 
 /**
  * XML namespace names.
- * 
+ *
  * @see <a href="http://www.w3.org/TR/xml-names/">Namespaces in XML 1.0</a>
  *
  */

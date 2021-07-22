@@ -1,4 +1,4 @@
-package org.opengis.cite.ogcapicoverages10.util;
+package org.opengis.cite.ogcapiprocesses10.util;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -24,7 +24,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
-import org.opengis.cite.ogcapicoverages10.ReusableEntityFilter;
+
+import org.opengis.cite.ogcapiprocesses10.ReusableEntityFilter;
 import org.w3c.dom.Document;
 
 /**

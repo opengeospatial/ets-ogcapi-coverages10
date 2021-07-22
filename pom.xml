@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <parent>
     <groupId>org.opengis.cite</groupId>
@@ -14,9 +12,9 @@
   <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ogcapi-coverages 1.0 Conformance Test Suite</name>
+  <name>OGC API-Coverages 1.0 Conformance Test Suite</name>
   <description>Describe purpose of test suite.</description>
-  <url>http://opengeospatial.github.io/ets-ogcapi-coverages10/</url>
+  <url>http://opengeospatial.github.io/ets-ogcapi-processes10/</url>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -29,26 +27,29 @@
     <url>http://www.opengeospatial.org/</url>
   </organization>
   <scm>
-    <connection>scm:git:https://github.com/opengeospatial/ets-ogcapi-coverages10.git</connection>
-    <developerConnection>scm:git:git@github.com:opengeospatial/ets-ogcapi-coverages10.git</developerConnection>
-    <url>https://github.com/opengeospatial/ets-ogcapi-coverages10</url>
+    <connection>scm:git:https://github.com/opengeospatial/ets-ogcapi-processes10.git</connection>
+    <developerConnection>scm:git:git@github.com:opengeospatial/ets-ogcapi-processes10.git</developerConnection>
+    <url>https://github.com/opengeospatial/ets-ogcapi-processes10</url>
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>GitHub Issue Tracker</system>
-    <url>https://github.com/opengeospatial/ets-ogcapi-coverages10/issues</url>
+    <url>https://github.com/opengeospatial/ets-ogcapi-processes10/issues</url>
   </issueManagement>
   <developers>
     <developer>
-      <name>Alpha Beta</name>
-      <url>https://github.com/</url>
-      <timezone>UTC</timezone>
+      <name>Lyn Goltz</name>
+      <url>https://github.com/lgoltz</url>
+    </developer>
+    <developer>
+      <name>Dirk Stenger</name>
+      <url>https://github.com/dstenger</url>
     </developer>
   </developers>
 
   <properties>
-    <ets-code>ogcapi-coverages10</ets-code>
-    <spec-version>1.0</spec-version>
+    <ets-code>ogcapi-coverages-1.0</ets-code>
+    <spec-version>0.1</spec-version>
     <docker.teamengine.version>5.4</docker.teamengine.version>
   </properties>
 
@@ -66,12 +67,39 @@
       <artifactId>jersey-client</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.reprezen.kaizen</groupId>
+      <artifactId>openapi-parser</artifactId>
+      <version>4.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>4.0</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.jadler</groupId>
+      <artifactId>jadler-core</artifactId>
+      <version>1.3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.jadler</groupId>
+      <artifactId>jadler-jetty</artifactId>
+      <version>1.3.0</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -81,7 +109,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.10.4</version>
         <configuration>
-          <source>8</source>
+        <source>8</source>
           <docfilessubdirs>true</docfilessubdirs>
           <show>package</show>
           <links>
@@ -102,7 +130,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.opengis.cite.ogcapicoverages10.TestNGController</mainClass>
+              <mainClass>org.opengis.cite.ogcapiprocesses10.TestNGController</mainClass>
             </manifest>
           </archive>
           <descriptors>
@@ -343,7 +371,7 @@
     </repository>
     <site>
       <id>site</id>
-      <url>scm:git:git@github.com:opengeospatial/ets-ogcapi-coverages10.git</url>
+      <url>scm:git:git@github.com:opengeospatial/ets-ogcapi-processes10.git</url>
     </site>
   </distributionManagement>
 </project>
