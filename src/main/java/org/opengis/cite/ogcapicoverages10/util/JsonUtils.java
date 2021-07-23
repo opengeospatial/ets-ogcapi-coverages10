@@ -185,6 +185,40 @@ public class JsonUtils {
         }
         return alternateLinks;
     }
+    
+    /**
+     * Retrieves the property values as list.
+     *
+     * @param propertyName
+     *            name of the property, never <code>null</code>
+     * @param jsonPath
+     *            the json document to retrieve properties from, never <code>null</code>
+     * @return the property values as list, may be empty but never <code>null</code>
+     */
+    public static List<String> parseAsList( String propertyName, JsonPath jsonPath ) {
+        Object value = jsonPath.get( propertyName );
+        if ( value == null )
+            return Collections.emptyList();
+        if ( value instanceof String )
+            return Collections.singletonList( (String) value );
+        return jsonPath.getList( propertyName );
+    }
+    
+    /**
+     * Retrieves the property values as list.
+     *
+     * @param propertyName
+     *            name of the property, never <code>null</code>
+     * @param jsonPath
+     *            the json document to retrieve properties from, never <code>null</code>
+     * @return the property values as list, may be empty but never <code>null</code>
+     */
+    public static List<Map<String, Object>> parseAsListOfMaps( String propertyName, JsonPath jsonPath ) {
+        Object value = jsonPath.get( propertyName );
+        if ( value == null )
+            return Collections.emptyList();
+        return jsonPath.getList( propertyName );
+    } 
 
     /**
      * Parsing the media types which does not have a link woth property 'type' for.

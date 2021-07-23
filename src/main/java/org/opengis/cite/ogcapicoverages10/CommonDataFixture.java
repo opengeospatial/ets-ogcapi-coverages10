@@ -1,15 +1,17 @@
 package org.opengis.cite.ogcapicoverages10;
 
-import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.API_MODEL;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.IUT;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.NO_OF_COLLECTIONS;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.reprezen.kaizen.oasparser.model3.OpenApi3;
-
+import com.reprezen.kaizen.oasparser.OpenApiParser;
 import org.opengis.cite.ogcapicoverages10.conformance.RequirementClass;
 import org.testng.ITestContext;
 import org.testng.SkipException;
@@ -43,9 +45,49 @@ public class CommonDataFixture extends CommonFixture {
 
     @BeforeClass
     public void retrieveApiModel( ITestContext testContext ) {
-        this.apiModel = (OpenApi3) testContext.getSuite().getAttribute( API_MODEL.getName() );
-    }
+    	
+    	
+    	URI modelUri=null;
+		try {
+			modelUri = new URI(testContext.getSuite().getAttribute( IUT.getName() ).toString()+"/api");
+		} catch (URISyntaxException e) {
+		
+			e.printStackTrace();
+		}
+		
+    
+    	boolean validate = false;
 
+		modelUri = appendFormatToURI(modelUri);
+		try {
+			this.apiModel = (OpenApi3) new OpenApiParser().parse(modelUri.toURL(), validate);
+		} catch (Exception ed) {
+			try {
+				modelUri = new URI(modelUri.toString().replace("application/json", "json"));
+
+				this.apiModel = (OpenApi3) new OpenApiParser().parse(modelUri.toURL(), validate);
+			} catch (Exception ignored) {
+			}
+		}
+    	    	
+      
+    }
+    private URI appendFormatToURI(URI input)
+	{
+		URI modelUri = null;
+		try {
+
+			if (input.toString().contains("?")) {
+				modelUri = new URI(input.toString() + "f=application/json");
+			} else {
+				modelUri = new URI(input.toString() + "?f=application/json");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return modelUri;
+	}
     public OpenApi3 getApiModel() {
         if ( apiModel == null )
             throw new SkipException( "ApiModel is not available." );
