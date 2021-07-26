@@ -1,0 +1,12 @@
+https://demo.pygeoapi.io/master
+
+https://maps.ecere.com/ogcapi
+
+https://oapi.rasdaman.org/rasdaman/oapi
+
+https://test.cubewerx.com/cubewerx/cubeserv/demo/ogcapi/Daraa
+
+https://gs-main.geosolutionsgroup.com/geoserver/ogc/coverages
+
+
+The domainset and rangetype should both be linked from /collections/{id}, and embedded within /collections/{id}/coverage to the extent that the negotiated media type supports doing so.

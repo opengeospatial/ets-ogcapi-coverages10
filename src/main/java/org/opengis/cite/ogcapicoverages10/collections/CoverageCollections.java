@@ -78,7 +78,7 @@ public class CoverageCollections extends CommonDataFixture {
 	 * @param testPoint the test point to test, never <code>null</code>
 	 */
 	@Test(description = "Section 7.5.1.1. Implements Test for Requirement 3(/req/geodata-coverage/coverage-op)", groups = "collections", dataProvider = "collectionsUris", alwaysRun = true)
-	public void validateCoverageCollectionsMetadataOperationResponse_Content(TestPoint testPoint) {
+	public void validateCoverageCollectionsMetadataOperationResponse_Links(TestPoint testPoint) {
 
 		JsonPath response;
 		Response request = init().baseUri(rootUri.toString()).accept(JSON).when().request(GET, "/collections");
@@ -89,12 +89,13 @@ public class CoverageCollections extends CommonDataFixture {
 		
 		boolean apiHasAtLeastOneCoverageCollection = false;
 
-		Set<String> collectionInstances = new HashSet<>();
+		Set<String> coverageCollectionInstances = new HashSet<>();
+		
 		for (Object collection : collections) {
 			Map<String, Object> collectionMap = (Map<String, Object>) collection;
 			Object collectionInstance = collectionMap.get("id");
 		
-			collectionInstances.add((String) collectionInstance);
+			
 			boolean coverageCollectionMetadataIsValid = false;
 			boolean isCoverageCollection = false;
 			boolean hasDomainSetLink = false;
@@ -119,12 +120,25 @@ public class CoverageCollections extends CommonDataFixture {
 			}
 			
 			if(isCoverageCollection) {
+				
+				coverageCollectionInstances.add((String) collectionInstance);
 		        assertTrue(hasDomainSetLink && hasRangeTypeLink,
 		               "The Coverage Collection "+collectionMap.get("id")+" is missing either a domainset or rangetype link");
 
 			}
 			
 		}
+		
+		//validate first collection in coverageCollectionInstances
+		
+		
+		Response coverageRequest = init().baseUri(rootUri.toString()).accept(JSON).when().request(GET, "/collections/"+coverageCollectionInstances.iterator().next());
+		coverageRequest.then().statusCode(200);
+		JsonPath coverageResponse = coverageRequest.jsonPath();
+		System.out.println("GEH ID "+coverageResponse.getString("id"));
+		
+		//----end validation of collection
+	
 
         assertTrue(apiHasAtLeastOneCoverageCollection,
                 "Must have at least one coverage collection. None of the collection have relation http://www.opengis.net/def/rel/ogc/1.0/coverage and a media type");
@@ -132,4 +146,6 @@ public class CoverageCollections extends CommonDataFixture {
 	}
 
 
+	
+	
 }
