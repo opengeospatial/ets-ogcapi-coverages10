@@ -42,7 +42,7 @@ public class SuiteFixtureListener implements ISuiteListener {
     }
 
     /**
-     * Processes test suite arguments and sets suite attributes accordingly. The entity referenced by the
+     * Coverages test suite arguments and sets suite attributes accordingly. The entity referenced by the
      * {@link TestRunArg#IUT iut} argument is retrieved and written to a File that is set as the value of the suite
      * attribute {@link SuiteAttribute#TEST_SUBJ_FILE testSubjectFile}.
      *

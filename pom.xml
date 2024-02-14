@@ -14,7 +14,7 @@
 
   <name>OGC API-Coverages 1.0 Conformance Test Suite</name>
   <description>Describe purpose of test suite.</description>
-  <url>http://opengeospatial.github.io/ets-ogcapi-processes10/</url>
+  <url>http://opengeospatial.github.io/ets-ogcapi-coverages10/</url>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -27,14 +27,14 @@
     <url>http://www.opengeospatial.org/</url>
   </organization>
   <scm>
-    <connection>scm:git:https://github.com/opengeospatial/ets-ogcapi-processes10.git</connection>
-    <developerConnection>scm:git:git@github.com:opengeospatial/ets-ogcapi-processes10.git</developerConnection>
-    <url>https://github.com/opengeospatial/ets-ogcapi-processes10</url>
+    <connection>scm:git:https://github.com/opengeospatial/ets-ogcapi-coverages10.git</connection>
+    <developerConnection>scm:git:git@github.com:opengeospatial/ets-ogcapi-coverages10.git</developerConnection>
+    <url>https://github.com/opengeospatial/ets-ogcapi-coverages10</url>
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>GitHub Issue Tracker</system>
-    <url>https://github.com/opengeospatial/ets-ogcapi-processes10/issues</url>
+    <url>https://github.com/opengeospatial/ets-ogcapi-coverages10/issues</url>
   </issueManagement>
   <developers>
     <developer>
@@ -49,7 +49,7 @@
 
   <properties>
     <ets-code>ogcapi-coverages-1.0</ets-code>
-    <spec-version>0.1</spec-version>
+    <spec-version>1.0</spec-version>
     <docker.teamengine.version>5.4</docker.teamengine.version>
   </properties>
 
@@ -371,7 +371,7 @@
     </repository>
     <site>
       <id>site</id>
-      <url>scm:git:git@github.com:opengeospatial/ets-ogcapi-processes10.git</url>
+      <url>scm:git:git@github.com:opengeospatial/ets-ogcapi-coverages10.git</url>
     </site>
   </distributionManagement>
 </project>
