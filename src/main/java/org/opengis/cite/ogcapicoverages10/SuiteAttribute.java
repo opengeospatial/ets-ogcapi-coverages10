@@ -42,7 +42,7 @@ public enum SuiteAttribute {
     /**
      * Requirement classes parsed from /conformance; Added during execution.
      */
-    REQUIREMENTCLASSES( "requirementclasses", List.class ),
+    CONFORMANCECLASSES( "conformanceclasses", List.class ),
 
     /**
      * Parsed collections from resource /collections; Added during execution.

@@ -7,10 +7,9 @@ package org.opengis.cite.ogcapicoverages10.conformance;
  *
  * @author <a href="mailto:goltz@lat-lon.de">Lyn Goltz </a>
  */
-public enum RequirementClass {
+public enum ConformanceClass {
 
-    CORE( "http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core" ),
-	GeodataCoverage("http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/geodata-coverage");
+    CORE( "http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core" );
 
 
 
@@ -20,18 +19,18 @@ public enum RequirementClass {
 
     private final String mediaTypeOtherResources;
 
-    RequirementClass( String conformanceClass ) {
+    ConformanceClass( String conformanceClass ) {
         this( conformanceClass, null, null );
     }
 
-    RequirementClass( String conformanceClass, String mediaTypeFeaturesAndCollections, String mediaTypeOtherResources ) {
+    ConformanceClass( String conformanceClass, String mediaTypeFeaturesAndCollections, String mediaTypeOtherResources ) {
         this.conformanceClass = conformanceClass;
         this.mediaTypeFeaturesAndCollections = mediaTypeFeaturesAndCollections;
         this.mediaTypeOtherResources = mediaTypeOtherResources;
     }
 
     /**
-     * @return <code>true</code> if the RequirementClass has a media type for features and collections,
+     * @return <code>true</code> if the ConformanceClass has a media type for features and collections,
      *         <code>true</code> otherwise
      */
     public boolean hasMediaTypeForFeaturesAndCollections() {
@@ -46,7 +45,7 @@ public enum RequirementClass {
     }
 
     /**
-     * @return <code>true</code> if the RequirementClass has a media type for other resources,
+     * @return <code>true</code> if the ConformanceClass has a media type for other resources,
      *         <code>true</code> otherwise
      */
     public boolean hasMediaTypeForOtherResources() {
@@ -62,11 +61,11 @@ public enum RequirementClass {
 
     /**
      * @param conformanceClass
-     *            the conformance class of the RequirementClass to return.
-     * @return the RequirementClass with the passed conformance class, <code>null</code> if RequirementClass exists
+     *            the conformance class of the ConformanceClass to return.
+     * @return the ConformanceClass with the passed conformance class, <code>null</code> if ConformanceClass exists
      */
-    public static RequirementClass byConformanceClass( String conformanceClass ) {
-        for ( RequirementClass requirementClass : values() ) {
+    public static ConformanceClass byConformanceClass( String conformanceClass ) {
+        for ( ConformanceClass requirementClass : values() ) {
             if ( requirementClass.conformanceClass.equals( conformanceClass ) )
                 return requirementClass;
         }

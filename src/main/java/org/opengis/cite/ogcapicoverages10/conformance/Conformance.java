@@ -4,9 +4,8 @@ import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.Method.GET;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.API_MODEL;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.IUT;
-import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
-import static org.opengis.cite.ogcapicoverages10.conformance.RequirementClass.CORE;
-import static org.opengis.cite.ogcapicoverages10.conformance.RequirementClass.GeodataCoverage;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.CONFORMANCECLASSES;
+import static org.opengis.cite.ogcapicoverages10.conformance.ConformanceClass.CORE;
 import static org.opengis.cite.ogcapicoverages10.openapi3.OpenApiUtils.retrieveTestPointsForConformance;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
@@ -41,7 +40,7 @@ import io.restassured.response.Response;
  */
 public class Conformance extends CommonFixture {
 
-    private List<RequirementClass> requirementClasses;
+    private List<ConformanceClass> conformanceClasses;
 
     @DataProvider(name = "conformanceUris")
     public Object[][] conformanceUris( ITestContext testContext ) {
@@ -62,8 +61,8 @@ public class Conformance extends CommonFixture {
     }
 
     @AfterClass
-    public void storeRequirementClassesInTestContext( ITestContext testContext ) {
-        testContext.getSuite().setAttribute( REQUIREMENTCLASSES.getName(), this.requirementClasses );
+    public void storeConformanceClassesInTestContext( ITestContext testContext ) {
+        testContext.getSuite().setAttribute( CONFORMANCECLASSES.getName(), this.conformanceClasses );
     }
 
     /**
@@ -88,9 +87,9 @@ public class Conformance extends CommonFixture {
         response.then().statusCode( 200 );
 
         JsonPath jsonPath = response.jsonPath();
-        this.requirementClasses = parseAndValidateRequirementClasses( jsonPath );
-        assertTrue( this.requirementClasses.contains( GeodataCoverage ),
-                    "Requirement class \"http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/geodata-coverage\" is not available from path "
+        this.conformanceClasses = parseAndValidateConformanceClasses( jsonPath );
+        assertTrue( this.conformanceClasses.contains( CORE ),
+                    "Conformance class \"http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core\" is not available from path "
                                                               + testPointUri );
     }
 
@@ -101,23 +100,23 @@ public class Conformance extends CommonFixture {
      * @throws AssertionError
      *             if the json does not follow the expected structure
      */
-    List<RequirementClass> parseAndValidateRequirementClasses( JsonPath jsonPath ) {
+    List<ConformanceClass> parseAndValidateConformanceClasses( JsonPath jsonPath ) {
         List<Object> conformsTo = jsonPath.getList( "conformsTo" );
         assertNotNull( conformsTo, "Missing member 'conformsTo'." );
 
-        List<RequirementClass> requirementClasses = new ArrayList<>();
+        List<ConformanceClass> conformanceClasses = new ArrayList<>();
         for ( Object conformTo : conformsTo ) {
        
             if ( conformTo instanceof String ) {
-                String conformanceClass = (String) conformTo;
-                RequirementClass requirementClass = RequirementClass.byConformanceClass( conformanceClass );
-                if ( requirementClass != null )
-                    requirementClasses.add( requirementClass );
+                String conformanceClassString = (String) conformTo;
+                ConformanceClass conformanceClass = ConformanceClass.byConformanceClass( conformanceClassString );
+                if ( conformanceClass != null )
+                    conformanceClasses.add( conformanceClass );
             } else
                 throw new AssertionError( "At least one element array 'conformsTo' is not a string value (" + conformTo
                                           + ")" );
         }
-        return requirementClasses;
+        return conformanceClasses;
     }
 
 }
