@@ -1,5 +1,4 @@
 package org.opengis.cite.ogcapicoverages10.collections;
-
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.Method.GET;
 import static org.opengis.cite.ogcapicoverages10.EtsAssert.assertTrue;
@@ -29,13 +28,7 @@ import org.testng.annotations.Test;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
-/**
- * A.2.5. Coverage Collections {root}/collections
- *
- * @author <a href="mailto:goltz@lat-lon.de">Lyn Goltz </a>
- */
-public class CoverageCollections extends CommonDataFixture {
+public class CoverageDescription extends CommonDataFixture {
 
 	private final Map<TestPoint, Response> testPointAndResponses = new HashMap<>();
 
@@ -76,8 +69,8 @@ public class CoverageCollections extends CommonDataFixture {
 	 *
 	 * @param testPoint the test point to test, never <code>null</code>
 	 */
-	@Test(description = "Implements Test for Requirement 1(/req/core/collection-list)", groups = "collections", dataProvider = "collectionsUris", alwaysRun = true)
-	public void validateCoverageCollectionsMetadataOperationResponse_Links(TestPoint testPoint) {
+	@Test(description = "Implements Test for Requirement 2(/req/core/collection-description)", groups = "collections", dataProvider = "collectionsUris", alwaysRun = true)
+	public void validateCoverageDescriptionResponse_Links(TestPoint testPoint) {
 
 		JsonPath response;
 		Response request = init().baseUri(rootUri.toString()).accept(JSON).when().request(GET, "/collections");
@@ -85,8 +78,8 @@ public class CoverageCollections extends CommonDataFixture {
 		request.then().statusCode(200);
 		response = request.jsonPath();
 		List<Object> collections = response.getList("collections");
-		
-		boolean apiHasAtLeastOneCoverageCollection = false;
+		ArrayList<String> checksForRequirement2A = new ArrayList<String>();
+		ArrayList<String> checksForRequirement2B = new ArrayList<String>();
 
 		Set<String> coverageCollectionInstances = new HashSet<>();
 		
@@ -107,7 +100,7 @@ public class CoverageCollections extends CommonDataFixture {
 			for (Map<String, Object> link : collectionLinks) {
 				Object rel = link.get("rel");
 				if (rel.equals("http://www.opengis.net/def/rel/ogc/1.0/coverage")) {
-					apiHasAtLeastOneCoverageCollection = true;
+		
 					isCoverageCollection = true;
 				}
 				if (rel.equals("http://www.opengis.net/def/rel/ogc/1.0/coverage-domainset")) {
@@ -128,22 +121,67 @@ public class CoverageCollections extends CommonDataFixture {
 			
 		}
 		
-		//validate first collection in coverageCollectionInstances
 		
 		
-		Response coverageRequest = init().baseUri(rootUri.toString()).accept(JSON).when().request(GET, "/collections/"+coverageCollectionInstances.iterator().next());
-		coverageRequest.then().statusCode(200);
-		JsonPath coverageResponse = coverageRequest.jsonPath();
+		Iterator it  = coverageCollectionInstances.iterator();
 		
-		//----end validation of collection
+		while(it.hasNext())
+		{
+			
+		    
+			
+			
+			String collectionId = it.next().toString();
 	
+			
+			Response coverageRequest = init().baseUri(rootUri.toString()).accept(JSON).when().request(GET, "/collections/"+collectionId);
+			coverageRequest.then().statusCode(200);
+			JsonPath coverageResponse = coverageRequest.jsonPath();
+	        List<Object> links = coverageResponse.getList( "links" );
 
-        assertTrue(apiHasAtLeastOneCoverageCollection,
-                "Must have at least one coverage collection. None of the collection have relation http://www.opengis.net/def/rel/ogc/1.0/coverage and a media type");
+	        for ( Object link : links ) {
+	            Map<String, Object> linkMap = (Map<String, Object>) link;
+	            Object linkHref = linkMap.get( "href" );
+	            Object linkType = linkMap.get( "rel" );
+	        
+	            
+	            if(linkType.toString().equals("http://www.opengis.net/def/rel/ogc/1.0/coverage") && 
+	            		(linkHref.toString().contains("/collections/") && linkHref.toString().contains("/coverage"))) {
+	            	     checksForRequirement2A.add("true");
+	            }
+	            
+	            if(linkType.toString().equals("http://www.opengis.net/def/rel/ogc/1.0/schema") && 
+	            		(linkHref.toString().contains("/collections/") && linkHref.toString().contains("/schema"))) {
+	            	     checksForRequirement2B.add("true");
+	            }	            
+	        }
+	        
+	        
+			//----end validation of collection
+			for(int k = 0; k < checksForRequirement2A.size(); k++)
+			{
+				
+		        assertTrue(checksForRequirement2A.get(k).equals("true"),
+		        		 "Collection Descriptions did not include a link to a coverage resource at /collections/"+collectionId+"/coverage using the link relation type [ogc-rel:coverage]");
+
+			}
+			
+			for(int k = 0; k < checksForRequirement2B.size(); k++)
+			{
+				
+		        assertTrue(checksForRequirement2B.get(k).equals("true"),
+		        		 "Collection Descriptions did not include a link to a coverage resource at /collections/"+collectionId+"/schema using the link relation type [ogc-rel:schema]");
+
+			}			
+			
+		}
+		
+	
+		
+
+
 
 	}
 
 
-	
-	
 }

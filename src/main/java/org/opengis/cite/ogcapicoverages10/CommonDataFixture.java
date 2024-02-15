@@ -2,7 +2,7 @@ package org.opengis.cite.ogcapicoverages10;
 
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.IUT;
 import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.NO_OF_COLLECTIONS;
-import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.REQUIREMENTCLASSES;
+import static org.opengis.cite.ogcapicoverages10.SuiteAttribute.CONFORMANCECLASSES;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 import com.reprezen.kaizen.oasparser.model3.OpenApi3;
 import com.reprezen.kaizen.oasparser.OpenApiParser;
-import org.opengis.cite.ogcapicoverages10.conformance.RequirementClass;
+import org.opengis.cite.ogcapicoverages10.conformance.ConformanceClass;
 import org.testng.ITestContext;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
@@ -26,13 +26,13 @@ public class CommonDataFixture extends CommonFixture {
 
     private OpenApi3 apiModel;
 
-    private List<RequirementClass> requirementClasses;
+    private List<ConformanceClass> conformanceClasses;
 
     protected int noOfCollections = DEFAULT_NUMBER_OF_COLLECTIONS;
 
     @BeforeClass
-    public void requirementClasses( ITestContext testContext ) {
-        this.requirementClasses = (List<RequirementClass>) testContext.getSuite().getAttribute( REQUIREMENTCLASSES.getName() );
+    public void conformanceClasses( ITestContext testContext ) {
+        this.conformanceClasses = (List<ConformanceClass>) testContext.getSuite().getAttribute( CONFORMANCECLASSES.getName() );
     }
 
     @BeforeClass
@@ -95,22 +95,22 @@ public class CommonDataFixture extends CommonFixture {
     }
 
     protected List<String> createListOfMediaTypesToSupportForOtherResources( Map<String, Object> linkToSelf ) {
-        if ( this.requirementClasses == null )
+        if ( this.conformanceClasses == null )
             throw new SkipException( "No requirement classes described in  resource /conformance available" );
         List<String> mediaTypesToSupport = new ArrayList<>();
-        for ( RequirementClass requirementClass : this.requirementClasses )
-            if ( requirementClass.hasMediaTypeForOtherResources() )
-                mediaTypesToSupport.add( requirementClass.getMediaTypeOtherResources() );
+        for ( ConformanceClass conformanceClass : this.conformanceClasses )
+            if ( conformanceClass.hasMediaTypeForOtherResources() )
+                mediaTypesToSupport.add( conformanceClass.getMediaTypeOtherResources() );
         if ( linkToSelf != null )
             mediaTypesToSupport.remove( linkToSelf.get( "type" ) );
         return mediaTypesToSupport;
     }
 
     protected List<String> createListOfMediaTypesToSupportForFeatureCollectionsAndFeatures() {
-        if ( this.requirementClasses == null )
+        if ( this.conformanceClasses == null )
             throw new SkipException( "No requirement classes described in  resource /conformance available" );
         List<String> mediaTypesToSupport = new ArrayList<>();
-        for ( RequirementClass requirementClass : this.requirementClasses )
+        for ( ConformanceClass requirementClass : this.conformanceClasses )
             if ( requirementClass.hasMediaTypeForFeaturesAndCollections() )
                 mediaTypesToSupport.add( requirementClass.getMediaTypeFeaturesAndCollections() );
         return mediaTypesToSupport;
