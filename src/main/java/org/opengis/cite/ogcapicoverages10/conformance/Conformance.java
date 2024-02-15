@@ -89,7 +89,7 @@ public class Conformance extends CommonFixture {
         JsonPath jsonPath = response.jsonPath();
         this.conformanceClasses = parseAndValidateConformanceClasses( jsonPath );
         assertTrue( this.conformanceClasses.contains( CORE ),
-                    "Conformance class \"http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/geodata-coverage\" is not available from path "
+                    "Conformance class \"http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core\" is not available from path "
                                                               + testPointUri );
     }
 
